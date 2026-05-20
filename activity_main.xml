@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gs_surface"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/headerSection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/gs_screen_padding"
+        android:paddingTop="@dimen/gs_screen_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvGreeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gs_secondary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:text="Hello, Tebogo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gs_header_margin_small"
+            android:text="@string/home_title"
+            style="@style/TextAppearance.GabsStudentStay.ScreenTitle"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gs_header_margin_small"
+            android:text="@string/home_subtitle"
+            style="@style/TextAppearance.GabsStudentStay.ScreenSubtitle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/searchSection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gs_space_large"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/gs_screen_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerSection">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/gs_input_min_height"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/gs_surface_card"
+            app:cardCornerRadius="@dimen/gs_button_corner"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@android:drawable/ic_menu_search"
+                    app:tint="@color/gs_outline" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/home_search_placeholder"
+                    android:textColor="@color/gs_outline"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFilterPlaceholder"
+            style="@style/Widget.GabsStudentStay.Button.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/gs_input_min_height"
+            android:layout_marginStart="@dimen/gs_space_medium"
+            android:text="@string/home_filter"
+            app:icon="@android:drawable/ic_menu_sort_by_size"
+            app:iconTint="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/filterStateSection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gs_space_small"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/gs_screen_padding"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchSection"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/tvFilterStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/filter_showing_results"
+            android:textColor="@color/gs_secondary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClearFilters"
+            style="@style/Widget.GabsStudentStay.Button.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_clear_home"
+            />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSmartAlerts"
+        style="@style/Widget.GabsStudentStay.Button.Outlined"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gs_space_small"
+        android:layout_marginHorizontal="@dimen/gs_screen_padding"
+        android:text="@string/smart_alerts_button"
+        app:icon="@android:drawable/ic_dialog_info"
+        app:iconTint="@color/gs_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterStateSection"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListings"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/gs_screen_padding"
+        android:paddingTop="@dimen/gs_space_large"
+        android:paddingEnd="@dimen/gs_screen_padding"
+        android:paddingBottom="@dimen/gs_space_section"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSmartAlerts"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_listing" />
+
+    <TextView
+        android:id="@+id/tvEmptyState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_empty"
+        android:textColor="@color/gs_text_secondary"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/rvListings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rvListings"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

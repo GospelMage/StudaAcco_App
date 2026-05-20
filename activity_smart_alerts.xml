@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartAlertsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gs_surface"
+    android:fillViewport="true"
+    tools:context=".SmartAlertsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/gs_screen_padding"
+        android:paddingTop="@dimen/gs_screen_padding"
+        android:paddingBottom="@dimen/gs_space_section">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/smart_alerts_title"
+            style="@style/TextAppearance.GabsStudentStay.ScreenTitle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gs_header_margin_small"
+            android:text="@string/smart_alerts_subtitle"
+            style="@style/TextAppearance.GabsStudentStay.ScreenSubtitle" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gs_space_large"
+            app:cardBackgroundColor="@color/gs_surface_card"
+            app:cardCornerRadius="@dimen/gs_card_radius"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/gs_card_padding">
+
+                <TextView
+                    android:id="@+id/tvPreferenceStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/smart_alerts_no_preferences"
+                    android:textColor="@color/gs_text_secondary"
+                    android:textSize="14sp"
+                    tools:text="Preferences loaded" />
+
+                <TextView
+                    android:id="@+id/tvPrefMaxPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:textColor="@color/gs_text_primary"
+                    android:textSize="14sp"
+                    tools:text="Max price: BWP 2,500" />
+
+                <TextView
+                    android:id="@+id/tvPrefLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/gs_text_primary"
+                    android:textSize="14sp"
+                    tools:text="Preferred location: Block 6" />
+
+                <TextView
+                    android:id="@+id/tvPrefAvailability"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/gs_text_primary"
+                    android:textSize="14sp"
+                    tools:text="Availability date: 2026-06-15" />
+
+                <TextView
+                    android:id="@+id/tvPrefAmenities"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/gs_text_primary"
+                    android:textSize="14sp"
+                    tools:text="Preferred amenities: WiFi, Security" />
+
+                <TextView
+                    android:id="@+id/tvPrefNotifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/gs_text_primary"
+                    android:textSize="14sp"
+                    tools:text="Notifications enabled: Yes" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gs_space_large"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCheckMatchingRooms"
+                style="@style/Widget.GabsStudentStay.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/smart_alerts_check" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendTestAlert"
+                style="@style/Widget.GabsStudentStay.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gs_space_medium"
+                android:text="@string/smart_alerts_send_test" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBackToHome"
+                style="@style/Widget.GabsStudentStay.Button.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="@string/smart_alerts_back_home" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvMatchStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gs_space_large"
+            android:textColor="@color/gs_secondary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:text="3 rooms match your saved preferences." />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gs_space_large"
+            android:text="@string/smart_alerts_matching_rooms"
+            style="@style/TextAppearance.GabsStudentStay.SectionTitle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAlertMatches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gs_space_small"
+            android:nestedScrollingEnabled="false"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_alert_match" />
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
